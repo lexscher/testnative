@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import console from 'console';
+import MovieList from './components/MovieList';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,9 +18,8 @@ export default class App extends Component {
       this.setState({
         isLoading: true,
         movieList: [...responseJson.movies]
-      }, () => {
-
-        debugger;
+      }, () => { 
+        // debugger;
       })
       return responseJson.movies;
     })
@@ -35,13 +35,11 @@ export default class App extends Component {
     let count = movieList.length;
     return (
       <View style={styles.container} className='main-app'>
-        <Text style={styles.welcome}>Welcome to React Native!!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>TEST!!</Text>
         {isLoading ? (
-          <Text style={styles.welcome}>movie count: {count}</Text>
+          <MovieList movieList={movieList} />
         ) : (
-          <Text>No movie Here</Text>
+          <Text>No movies Here</Text>
         )}
       </View>
     );
